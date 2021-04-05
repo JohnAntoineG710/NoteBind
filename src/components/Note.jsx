@@ -2,8 +2,8 @@ import React from "react";
 
 const Note = (props) => (
   <div className="note">
-    <h1>Note Title</h1>
-    <p>This is a brilliant note body</p>
+    <h1>{props.title}</h1>
+    <p>{props.body}</p>
   </div>
 );
 
