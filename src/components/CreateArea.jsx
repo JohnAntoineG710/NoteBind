@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 const CreateArea = (props) => {
+  const [expand, setExpand] = useState(false);
+
   const [note, setNote] = useState({
     title: "",
     content: "",
@@ -23,20 +25,25 @@ const CreateArea = (props) => {
           e.preventDefault();
         }}
       >
-        <input
-          name="title"
-          placeholder="Title"
-          value={note.title}
-          onChange={changeNote}
-        />
+        {expand && (
+          <input
+            name="title"
+            placeholder="Title"
+            value={note.title}
+            onChange={changeNote}
+          />
+        )}
         <textarea
           name="content"
           placeholder="Take a note..."
-          rows="3"
+          rows={expand ? 3 : 1}
           value={note.content}
+          onClick={() => {
+            setExpand(true);
+          }}
           onChange={changeNote}
         />
-        <button>Add</button>
+        {expand && <button>Add</button>}
       </form>
     </div>
   );
