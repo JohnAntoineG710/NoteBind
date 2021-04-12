@@ -10,7 +10,7 @@ const CreateArea = (props) => {
 
   const changeNote = (e) => {
     const { name, value } = e.target;
-    setNote({ ...note, [name]: value });
+    setNote({ ...note, [name]: value, folderID: props.activeFolder });
   };
 
   return (

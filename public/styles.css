@@ -20,6 +20,16 @@ main {
   height: 100%;
 }
 
+.appBody {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.notesBody {
+  flex: 1;
+}
+
 /* html { */
 /*   font-family: "Montserrat", sans-serif; */
 /* } */
