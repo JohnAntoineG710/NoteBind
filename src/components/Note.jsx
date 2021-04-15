@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NoteDialog from "./NoteDialog";
+import { Box } from "@material-ui/core";
 
 const Note = (props) => {
   const [open, setOpen] = useState(false);
@@ -9,7 +10,7 @@ const Note = (props) => {
   };
 
   return (
-    <div className="note">
+    <Box m={props.m}>
       <h1>{props.title}</h1>
       <p>{props.content}</p>
       <button
@@ -37,7 +38,7 @@ const Note = (props) => {
           actionLabel="Edit Note"
         />
       )}
-    </div>
+    </Box>
   );
 };
 

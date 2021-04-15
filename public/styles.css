@@ -1,34 +1,35 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+/* * { */
+/*   /\* padding: 0; *\/ */
+/*   /\* margin: 0; *\/ */
+/*   box-sizing: border-box; */
+/* } */
 
-.viewport {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-}
+/* .viewport { */
+/*   height: 100vh; */
+/*   width: 100vw; */
+/*   display: flex; */
+/*   flex-direction: column; */
+/*   margin: 0; */
+/*   padding: 0; */
+/* } */
 
-main {
-  flex: 1;
-}
+/* main { */
+/*   flex: 1; */
+/* } */
 
-.main-grid {
-  padding: 16px;
-  height: 100%;
-}
+/* .main-grid { */
+/*   flex: 1; */
+/* } */
 
-.appBody {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
+/* .appBody { */
+/*   display: flex; */
+/*   justify-content: flex-end; */
+/*   width: 100%; */
+/* } */
 
-.notesBody {
-  flex: 1;
-}
+/* .notesBody { */
+/*   flex: 1; */
+/* } */
 
 /* html { */
 /*   font-family: "Montserrat", sans-serif; */
