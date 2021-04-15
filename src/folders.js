@@ -1,16 +1,8 @@
 const folders = [
-    {
-        id: 1,
-        name: 'work'
-    },
-    {
-        id: 2,
-        name: 'personal'
-    },
-    {
-        id: 3,
-        name: 'fun'
-    },
+  {
+    id: 1,
+    name: "Sample Folder",
+  },
 ];
 
 export default folders;

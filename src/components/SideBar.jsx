@@ -1,26 +1,26 @@
 import React from "react";
+import Folder from "./Folder";
+import CreateFolder from "./CreateFolder";
 
-const SideBar = (props) => (
-  <div className="container">
-    {props.folders.map((folder) => (
-      <li
-        key={folder.id}
-        onClick={() => {
-          props.selectFolder(folder.id);
-        }}
-        className={props.active === folder.id ? "active" : null}
-      >
-        {folder.name}
-        <button
-          onClick={() => {
-            props.deleteFolder(folder.id);
-          }}
-        >
-          X
-        </button>
-      </li>
-    ))}
-  </div>
-);
+const SideBar = (props) => {
+  return (
+    <div className="container">
+      <ul>
+        {props.folders.map((folder) => (
+          <Folder
+            key={folder.id}
+            id={folder.id}
+            name={folder.name}
+            active={props.active}
+            selectFolder={props.selectFolder}
+            deleteFolder={props.deleteFolder}
+            editFolder={props.editFolder}
+          />
+        ))}
+      </ul>
+      <CreateFolder addFolder={props.addFolder} />
+    </div>
+  );
+};
 
 export default SideBar;

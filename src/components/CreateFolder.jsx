@@ -1,28 +1,31 @@
 import React, { useState } from "react";
+import { IconButton } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import FolderDialog from "./FolderDialog";
 
 const CreateFolder = (props) => {
-  const [newFolder, setNewFolder] = useState("");
+  const [open, setOpen] = useState(false);
 
-  const handleChange = (e) => {
-    const text = e.target.value;
-    setNewFolder(text);
-  };
-
-  const addFolder = (e) => {
-    props.addFolder(newFolder);
-    setNewFolder("");
-    e.preventDefault();
+  const resetState = () => {
+    setOpen(false);
   };
 
   return (
     <div className="create-folder">
-      <input
-        name="createFolder"
-        type="text"
-        value={newFolder}
-        onChange={handleChange}
-      />
-      <button onClick={addFolder}>Add Folder</button>
+      <IconButton
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
+        <AddIcon color="primary" />
+      </IconButton>
+      {open && (
+        <FolderDialog
+          onReset={resetState}
+          onAction={props.addFolder}
+          label="Add Folder"
+        />
+      )}
     </div>
   );
 };

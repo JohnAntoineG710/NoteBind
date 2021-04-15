@@ -1,39 +1,11 @@
 const notes = [
   {
     key: 1,
-    title: "Delegation",
+    title: "Sample Note",
     content:
-      "Q. How many programmers does it take to change a light bulb? A. None – It’s a hardware problem",
-    folderID: 2,
-  },
-  {
-    key: 2,
-    title: "Loops",
-    content:
-      "How to keep a programmer in the shower forever. Show him the shampoo bottle instructions: Lather. Rinse. Repeat.",
+      "This is a sample note. You can perform CRUD operations on notes and folders, and everything is saved to local storage. Please note that this application is intended as a showcase, and should not be used in production.",
     folderID: 1,
   },
-  {
-    key: 3,
-    title: "Arrays",
-    content:
-      "Q. Why did the programmer quit his job? A. Because he didn't get arrays.",
-    folderID: 1,
-  },
-  {
-    key: 4,
-    title: "Hardware vs. Software",
-    content:
-      "What's the difference between hardware and software? You can hit your hardware with a hammer, but you can only curse at your software.",
-    folderID: 2,
-  },
-  {
-    key: 5,
-    title: "Tutorial Hell",
-    content:
-      "Remember not to get stuck in tutorial Hell, it's hell, obviously.",
-    folderID: 3,
-  }
 ];
 
 export default notes;

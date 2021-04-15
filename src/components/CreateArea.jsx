@@ -1,50 +1,32 @@
 import React, { useState } from "react";
+import { IconButton } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import NoteDialog from "./NoteDialog";
 
 const CreateArea = (props) => {
-  const [expand, setExpand] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const [note, setNote] = useState({
-    title: "",
-    content: "",
-  });
-
-  const changeNote = (e) => {
-    const { name, value } = e.target;
-    setNote({ ...note, [name]: value, folderID: props.activeFolder });
+  const resetState = () => {
+    setOpen(false);
   };
 
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          props.onAdd(note);
-          setNote({
-            title: "",
-            content: "",
-          });
-          e.preventDefault();
+      <IconButton
+        onClick={() => {
+          setOpen(true);
         }}
       >
-        {expand && (
-          <input
-            name="title"
-            placeholder="Title"
-            value={note.title}
-            onChange={changeNote}
-          />
-        )}
-        <textarea
-          name="content"
-          placeholder="Take a note..."
-          rows={expand ? 3 : 1}
-          value={note.content}
-          onClick={() => {
-            setExpand(true);
-          }}
-          onChange={changeNote}
+        <AddIcon color="primary" />
+      </IconButton>
+      {open && (
+        <NoteDialog
+          activeFolder={props.activeFolder}
+          onAction={props.onAdd}
+          onReset={resetState}
+          actionLabel="Add Note"
         />
-        {expand && <button>Add</button>}
-      </form>
+      )}
     </div>
   );
 };
