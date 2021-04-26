@@ -1,16 +1,44 @@
-import React from "react";
-import { Box, Grid } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import { Grid, Box } from "@material-ui/core";
+import Masonry from "react-masonry-css";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
 
-const NotesContainer = (props) => (
-  <Grid item xs={9} style={{ maxHeight: "100%", overflow: "auto" }}>
-    <Box m={props.m} style={{ overflow: "auto" }}>
-      <Grid container style={{ maxHeight: "100%", overflow: "auto" }}>
-        {props.list
-          .filter((note) => note.folderID === props.activeFolder)
-          .map((note) => (
-            <Grid item xs={3} key={note.key}>
+const breakpoints = {
+  default: 4,
+  960: 2,
+  1280: 3,
+};
+
+const NotesContainer = (props) => {
+  const [folderNotes, setFolderNotes] = useState([]);
+
+  useEffect(() => {
+    setFolderNotes(
+      props.list.filter((note) => note.folderID === props.activeFolder)
+    );
+  }, [props]);
+
+  return (
+    <Grid
+      item
+      xs={9}
+      lg={10}
+      style={{ position: "relative", maxHeight: "100%", overflow: "auto" }}
+    >
+      <Box
+        style={{
+          maxHeight: "100%",
+          overflow: "auto",
+        }}
+      >
+        <Masonry
+          breakpointCols={breakpoints}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {folderNotes.map((note) => {
+            return (
               <Note
                 key={note.key}
                 noteID={note.key}
@@ -21,14 +49,17 @@ const NotesContainer = (props) => (
                 onEdit={props.editItem}
                 m={props.m}
               />
-            </Grid>
-          ))}
-        <Grid item xs={1}>
-          <CreateArea onAdd={props.addItem} activeFolder={props.activeFolder} />
-        </Grid>
-      </Grid>
-    </Box>
-  </Grid>
-);
+            );
+          })}
+        </Masonry>
+      </Box>
+      <CreateArea
+        onAdd={props.addItem}
+        activeFolder={props.activeFolder}
+        count={folderNotes.length}
+      />
+    </Grid>
+  );
+};
 
 export default NotesContainer;
