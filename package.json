@@ -10,6 +10,7 @@
     "@material-ui/system": "*",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "react-masonry-css": "*",
     "react-scripts": "3.2.0"
   },
   "devDependencies": {
