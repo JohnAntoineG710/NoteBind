@@ -65,12 +65,13 @@ const NoteDialog = (props) => {
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"
     >
-      <DialogTitle>New Note</DialogTitle>
+      <DialogTitle>{props.actionLabel}</DialogTitle>
       <DialogContent>
         <TextField
           InputProps={{ ...inputProps, name: "title", value: note.title }}
           label="Title"
           fullWidth
+          style={{ marginBottom: "24px" }}
         />
         <TextField
           InputProps={{
