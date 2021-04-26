@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { IconButton } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+import { Button, IconButton } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/AddCircleTwoTone";
 import NoteDialog from "./NoteDialog";
 
 const CreateArea = (props) => {
@@ -11,14 +11,39 @@ const CreateArea = (props) => {
   };
 
   return (
-    <div>
-      <IconButton
-        onClick={() => {
-          setOpen(true);
-        }}
-      >
-        <AddIcon color="primary" />
-      </IconButton>
+    <>
+      {props.count !== 0 ? (
+        <div style={{ position: "absolute", bottom: "16px", right: "16px" }}>
+          <IconButton
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            <AddIcon style={{ fontSize: "48px" }} color="primary" />
+          </IconButton>
+        </div>
+      ) : (
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            startIcon={<AddIcon color="secondary" />}
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            CREATE NOTE
+          </Button>
+        </div>
+      )}
       {open && (
         <NoteDialog
           activeFolder={props.activeFolder}
@@ -27,7 +52,7 @@ const CreateArea = (props) => {
           actionLabel="Add Note"
         />
       )}
-    </div>
+    </>
   );
 };
 
