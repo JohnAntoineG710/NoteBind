@@ -1,4 +1,14 @@
 import React, { useState } from "react";
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemText,
+  IconButton,
+} from "@material-ui/core";
+import FolderIcon from "@material-ui/icons/Folder";
+import BorderColorRoundedIcon from "@material-ui/icons/BorderColorRounded";
+import DeleteForeverRoundedIcon from "@material-ui/icons/DeleteForeverRounded";
 import FolderDialog from "./FolderDialog";
 
 const Folder = (props) => {
@@ -10,30 +20,37 @@ const Folder = (props) => {
 
   return (
     <>
-      <li
+      <ListItem
+        button
+        selected={props.active === props.id}
         onClick={() => {
           props.selectFolder(props.id);
         }}
-        className={props.active === props.id ? "active" : null}
+        divider
       >
-        {props.name}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            props.deleteFolder(props.id);
-          }}
-        >
-          X
-        </button>
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            setOpen(true);
-          }}
-        >
-          E
-        </button>
-      </li>
+        <ListItemIcon>
+          <FolderIcon />
+        </ListItemIcon>
+        <ListItemText primary={props.name} />
+        <ListItemSecondaryAction className="folder-item-action">
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpen(true);
+            }}
+          >
+            <BorderColorRoundedIcon />
+          </IconButton>
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              props.deleteFolder(props.id);
+            }}
+          >
+            <DeleteForeverRoundedIcon />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
       {open && (
         <FolderDialog
           folderID={props.id}
