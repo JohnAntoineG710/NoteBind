@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IconButton } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import FolderDialog from "./FolderDialog";
 
@@ -12,13 +12,17 @@ const CreateFolder = (props) => {
 
   return (
     <div className="create-folder">
-      <IconButton
+      <Button
         onClick={() => {
           setOpen(true);
         }}
+        startIcon={<AddIcon color="primary" />}
+        variant="contained"
+        color="secondary"
+        fullWidth
       >
-        <AddIcon color="primary" />
-      </IconButton>
+        Add Folder
+      </Button>
       {open && (
         <FolderDialog
           onReset={resetState}
