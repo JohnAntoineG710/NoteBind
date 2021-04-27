@@ -7,11 +7,13 @@
   "dependencies": {
     "@material-ui/core": "*",
     "@material-ui/icons": "*",
+    "@material-ui/styles": "*",
     "@material-ui/system": "*",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-masonry-css": "*",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "simplebar-react": "*"
   },
   "devDependencies": {
     "typescript": "3.3.3"

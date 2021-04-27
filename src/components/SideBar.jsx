@@ -3,34 +3,45 @@ import Folder from "./Folder";
 import CreateFolder from "./CreateFolder";
 import { Grid, List } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import SimpleBar from "simplebar-react";
+import "simplebar/dist/simplebar.min.css";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  list: {
     width: "100%",
     maxWidth: 360,
+    maxHeight: "100%",
+    overflow: "hidden",
+  },
+  root: {
+    padding: "0 8px",
+    maxHeight: "100%",
     backgroundColor: theme.palette.background.paper,
+    overflow: "hidden",
   },
 }));
 
 const SideBar = (props) => {
   const classes = useStyles();
   return (
-    <Grid item xs={3} lg={2} style={{ maxHeight: "100%", overflow: "auto" }}>
+    <Grid item xs={3} lg={2} className={classes.root}>
       <CreateFolder addFolder={props.addFolder} />
-      <List className={classes.root}>
-        {props.folders.map((folder) => (
-          <Folder
-            key={folder.id}
-            id={folder.id}
-            name={folder.name}
-            active={props.active}
-            selectFolder={props.selectFolder}
-            deleteFolder={props.deleteFolder}
-            editFolder={props.editFolder}
-            newFolder={props.newFolder === folder.id && true}
-            resetNewFolder={props.resetNewFolder}
-          />
-        ))}
+      <List className={classes.list}>
+        <SimpleBar style={{ height: "83vh" }}>
+          {props.folders.map((folder) => (
+            <Folder
+              key={folder.id}
+              id={folder.id}
+              name={folder.name}
+              active={props.active}
+              selectFolder={props.selectFolder}
+              deleteFolder={props.deleteFolder}
+              editFolder={props.editFolder}
+              newFolder={props.newFolder === folder.id && true}
+              resetNewFolder={props.resetNewFolder}
+            />
+          ))}
+        </SimpleBar>
       </List>
     </Grid>
   );
