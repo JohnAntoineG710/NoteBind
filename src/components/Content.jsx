@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Grid } from "@material-ui/core";
 import SideBar from "./SideBar";
 import NotesContainer from "./NotesContainer";
@@ -9,6 +9,7 @@ const Content = (props) => {
   const [list, setList] = useState([...sampleNotes]);
   const [folders, setFolders] = useState([...sampleFolders]);
   const [activeFolder, setActiveFolder] = useState(0);
+  const newElementID = useRef();
 
   useEffect(() => {
     let listStorage = JSON.parse(localStorage.getItem("list"));
@@ -42,8 +43,10 @@ const Content = (props) => {
   }, [list]);
 
   const addItem = (note) => {
-    const newNote = { ...note, key: list[list.length - 1].key + 1 };
+    const key = list[list.length - 1].key + 1;
+    const newNote = { ...note, key: key };
     setList([...list, newNote]);
+    newElementID.current = { id: key, type: "note" };
   };
 
   const delItem = (itemID) => {
@@ -75,6 +78,7 @@ const Content = (props) => {
       return [...currFolders, { id: newID, name: folder.name }];
     });
     setActiveFolder(newID);
+    newElementID.current = { id: newID, type: "folder" };
   };
 
   const editFolder = (folder) => {
@@ -101,6 +105,10 @@ const Content = (props) => {
     });
   };
 
+  const resetNewElement = () => {
+    newElementID.current = null;
+  };
+
   return (
     <Grid
       item
@@ -119,6 +127,12 @@ const Content = (props) => {
         editFolder={editFolder}
         deleteFolder={deleteFolder}
         addFolder={addFolder}
+        newFolder={
+          newElementID.current && newElementID.current.type === "folder"
+            ? newElementID.current.id
+            : null
+        }
+        resetNewFolder={resetNewElement}
       />
       <NotesContainer
         m={2}
@@ -127,6 +141,12 @@ const Content = (props) => {
         delItem={delItem}
         addItem={addItem}
         editItem={editItem}
+        newNote={
+          newElementID.current && newElementID.current.type === "note"
+            ? newElementID.current.id
+            : null
+        }
+        resetNewNote={resetNewElement}
       />
     </Grid>
   );

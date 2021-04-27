@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   ListItem,
   ListItemIcon,
@@ -13,13 +13,21 @@ import FolderDialog from "./FolderDialog";
 
 const Folder = (props) => {
   const [open, setOpen] = useState(false);
+  const newFolder = useRef();
+
+  useEffect(() => {
+    if (newFolder.current) {
+      newFolder.current.scrollIntoView({ behavior: "smooth" });
+      props.resetNewFolder();
+    }
+  }, [props, newFolder]);
 
   const resetState = () => {
     setOpen(false);
   };
 
   return (
-    <>
+    <div ref={props.newFolder ? newFolder : null}>
       <ListItem
         button
         selected={props.active === props.id}
@@ -60,7 +68,7 @@ const Folder = (props) => {
           label="Edit Folder"
         />
       )}
-    </>
+    </div>
   );
 };
 

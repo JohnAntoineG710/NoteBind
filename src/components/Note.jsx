@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import NoteDialog from "./NoteDialog";
 import {
   Card,
@@ -23,6 +23,14 @@ const useStyles = makeStyles({
 
 const Note = (props) => {
   const [open, setOpen] = useState(false);
+  const newNote = useRef();
+
+  useEffect(() => {
+    if (newNote.current) {
+      newNote.current.scrollIntoView({ behavior: "smooth" });
+      props.resetNewNote();
+    }
+  }, [props, newNote]);
 
   const resetState = () => {
     setOpen(false);
@@ -31,7 +39,7 @@ const Note = (props) => {
   const classes = useStyles();
 
   return (
-    <div>
+    <div ref={props.newNote ? newNote : null}>
       <Card className={classes.root}>
         <CardContent>
           <Typography

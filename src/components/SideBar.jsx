@@ -27,6 +27,8 @@ const SideBar = (props) => {
             selectFolder={props.selectFolder}
             deleteFolder={props.deleteFolder}
             editFolder={props.editFolder}
+            newFolder={props.newFolder === folder.id && true}
+            resetNewFolder={props.resetNewFolder}
           />
         ))}
       </List>

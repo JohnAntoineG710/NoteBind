@@ -48,6 +48,8 @@ const NotesContainer = (props) => {
                 onDelete={props.delItem}
                 onEdit={props.editItem}
                 m={props.m}
+                newNote={props.newNote === note.key && true}
+                resetNewNote={props.resetNewNote}
               />
             );
           })}
