@@ -47,6 +47,7 @@ const FolderDialog = (props) => {
   const inputProps = {
     name: "createFolder",
     type: "text",
+    autoComplete: "off",
     value: folder.name,
     onChange: handleChange,
   };
@@ -62,7 +63,11 @@ const FolderDialog = (props) => {
     >
       <DialogTitle>{props.folderID ? "Edit Folder" : "New Folder"}</DialogTitle>
       <DialogContent>
-        <TextField InputProps={inputProps} label="Folder Name" />
+        <TextField
+          InputProps={inputProps}
+          label="Folder Name"
+          color="primary"
+        />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleAction} color="primary">

@@ -53,6 +53,7 @@ const NoteDialog = (props) => {
 
   const inputProps = {
     type: "text",
+    autoComplete: "off",
     onChange: changeNote,
   };
 
@@ -72,6 +73,7 @@ const NoteDialog = (props) => {
           label="Title"
           fullWidth
           style={{ marginBottom: "24px" }}
+          color="primary"
         />
         <TextField
           InputProps={{
@@ -83,6 +85,7 @@ const NoteDialog = (props) => {
           label="Content"
           multiline
           fullWidth
+          color="primary"
         />
       </DialogContent>
       <DialogActions>

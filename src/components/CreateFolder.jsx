@@ -20,6 +20,7 @@ const CreateFolder = (props) => {
         variant="contained"
         color="secondary"
         fullWidth
+        style={{ marginTop: 8 }}
       >
         Add Folder
       </Button>

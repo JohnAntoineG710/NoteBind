@@ -33,6 +33,7 @@ const Content = (props) => {
       setFolders([{ id: 1, name: "unidentified" }]);
       setActiveFolder(1);
     } else if (folderIDs.indexOf(activeFolder) === -1) {
+      newElementID.current = { id: folders[0].id, type: "folder" };
       setActiveFolder(folders[0].id);
     }
     localStorage.setItem("folders", JSON.stringify(folders));
@@ -115,7 +116,6 @@ const Content = (props) => {
       container
       style={{
         flex: 1,
-        backgroundColor: "#bbb",
         overflow: "hidden",
       }}
     >

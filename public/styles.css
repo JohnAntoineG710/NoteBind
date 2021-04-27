@@ -24,6 +24,10 @@ li:hover .folder-item-action {
   display: block;
 }
 
+.simplebar-scrollbar:before {
+  background: #d8dee9 !important;
+}
+
 @media (max-width: 1280px) {
   .my-masonry-grid {
     margin-left: -16px; /* gutter size offset */
