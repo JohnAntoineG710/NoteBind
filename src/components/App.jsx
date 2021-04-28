@@ -39,6 +39,7 @@ const App = () => {
         className="viewport"
         style={{
           height: "100vh",
+          overflow: "hidden",
         }}
       >
         <Header theme={themeMode} changeTheme={changeTheme} />
