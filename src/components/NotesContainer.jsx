@@ -35,7 +35,7 @@ const NotesContainer = (props) => {
             overflow: "hidden",
           }}
         >
-          <SimpleBar style={{ height: "93vh", paddingTop: "8px" }}>
+          <SimpleBar style={{ maxHeight: "89vh", paddingTop: "8px" }}>
             <Masonry
               breakpointCols={breakpoints}
               className="my-masonry-grid"
