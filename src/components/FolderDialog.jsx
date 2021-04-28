@@ -12,6 +12,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const FolderDialog = (props) => {
   const [folder, setFolder] = useState({ name: "" });
+  const [nameError, setNameError] = useState(false);
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
@@ -40,8 +41,13 @@ const FolderDialog = (props) => {
   };
 
   const handleAction = () => {
-    props.onAction(folder);
-    handleClose();
+    setNameError(false);
+    if (folder.name === "") {
+      setNameError(true);
+    } else {
+      props.onAction(folder);
+      handleClose();
+    }
   };
 
   const inputProps = {
@@ -67,6 +73,8 @@ const FolderDialog = (props) => {
           InputProps={inputProps}
           label="Folder Name"
           color="primary"
+          error={nameError}
+          helperText={nameError && "Please provide folder name"}
         />
       </DialogContent>
       <DialogActions>

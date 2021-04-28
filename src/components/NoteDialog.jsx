@@ -15,6 +15,8 @@ const NoteDialog = (props) => {
     title: "",
     content: "",
   });
+  const [noteError, setNoteError] = useState(false);
+  const [titleError, setTitleError] = useState(false);
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
@@ -47,9 +49,20 @@ const NoteDialog = (props) => {
   };
 
   const handleAction = () => {
+    setTitleError(false);
+    setNoteError(false);
     const filedNote = { ...note, folderID: props.activeFolder };
+    if (filedNote.title === "" || filedNote.content === "") {
+      if (filedNote.title === "") {
+        setTitleError(true);
+      }
+      if (filedNote.content === "") {
+        setNoteError(true);
+      }
+    } else {
       props.onAction(filedNote);
       handleClose();
+    }
   };
 
   const inputProps = {
@@ -75,6 +88,8 @@ const NoteDialog = (props) => {
           fullWidth
           style={{ marginBottom: "24px" }}
           color="primary"
+          error={titleError}
+          helperText={titleError && "Please provide a title"}
         />
         <TextField
           InputProps={{
@@ -87,6 +102,8 @@ const NoteDialog = (props) => {
           multiline
           fullWidth
           color="primary"
+          error={noteError}
+          helperText={noteError && "Please provide note content"}
         />
       </DialogContent>
       <DialogActions>
