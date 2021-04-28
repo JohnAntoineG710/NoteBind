@@ -35,7 +35,7 @@ const NoteDialog = (props) => {
 
   const changeNote = (e) => {
     const { name, value } = e.target;
-    setNote({ ...note, [name]: value, folderID: props.activeFolder });
+    setNote({ ...note, [name]: value });
   };
 
   const handleClose = () => {
@@ -47,8 +47,9 @@ const NoteDialog = (props) => {
   };
 
   const handleAction = () => {
-    props.onAction(note);
-    handleClose();
+    const filedNote = { ...note, folderID: props.activeFolder };
+      props.onAction(filedNote);
+      handleClose();
   };
 
   const inputProps = {
