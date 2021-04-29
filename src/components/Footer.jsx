@@ -7,7 +7,7 @@ const year = date.getFullYear();
 const Footer = (props) => (
   <Grid item style={{ textAlign: "center" }}>
     <footer>
-      <Typography>Copyright ⓒ {year}</Typography>
+      <Typography>Copyright &copy; {year}</Typography>
     </footer>
   </Grid>
 );
