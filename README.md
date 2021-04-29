@@ -1,8 +1,6 @@
 # Note Bind
 
-<!-- a [Google Keep](https://keep.google.com/) clone, done with [ReactJS](https://reactjs.org/) as a practice project. This project was part of [The Complete Web Development Bootcamp](https://www.udemy.com/course/the-complete-web-development-bootcamp/) by [Angela Yu](https://uk.linkedin.com/in/angela-yu-963a584b) -->
-
-Note bind is an application that helps users organize and categorize their notes in a intuitive way that gets out of the way, and lets the user focus on more important tasks.
+Note bind is an application that helps users organize and categorize their notes in an intuitive way that gets out of the way, and lets the user focus on more important tasks.
 
 ### Roadmap
 
