@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import LightIcon from "@material-ui/icons/Brightness7";
 import DarkIcon from "@material-ui/icons/Brightness4";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import CodeRoundedIcon from "@material-ui/icons/CodeRounded";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const openGitHub = () =>
   window.open("https://github.com/JohnAntoineG710/NoteBind", "_blank");
 
-const Header = ({ theme, changeTheme }) => {
+const Header = ({ theme, changeTheme, randomData }) => {
   const classes = useStyles();
 
   return (
@@ -33,6 +34,9 @@ const Header = ({ theme, changeTheme }) => {
           <Typography variant="h6" className={classes.title}>
             NoteBind!
           </Typography>
+          <IconButton edge="end" onClick={randomData}>
+            <CodeRoundedIcon />
+          </IconButton>
           {theme === "light" ? (
             <IconButton
               edge="end"

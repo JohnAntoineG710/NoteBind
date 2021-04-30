@@ -2,12 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Grid } from "@material-ui/core";
 import SideBar from "./SideBar";
 import NotesContainer from "./NotesContainer";
-import sampleNotes from "../notes";
-import sampleFolders from "../folders";
 
 const Content = (props) => {
-  const [list, setList] = useState([...sampleNotes]);
-  const [folders, setFolders] = useState([...sampleFolders]);
+  const [list, setList] = useState([...props.sampleNotes]);
+  const [folders, setFolders] = useState([...props.sampleFolders]);
   const [activeFolder, setActiveFolder] = useState(0);
   const newElementID = useRef();
 
@@ -25,6 +23,17 @@ const Content = (props) => {
       setList(listStorage);
     }
   }, []);
+
+  useEffect(() => {
+    if (props.randomDataToggle) {
+      setFolders([...props.randomFolders]);
+      setList([...props.randomNotes]);
+    } else if (props.randomDataToggle === false) {
+      setFolders([...props.sampleFolders]);
+      setList([...props.sampleNotes]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.randomDataToggle]);
 
   useEffect(() => {
     const folderIDs = [];

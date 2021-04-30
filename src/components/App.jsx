@@ -5,17 +5,21 @@ import themeBase from "../theme";
 import Header from "./Header";
 import Content from "./Content";
 import Footer from "./Footer";
+import sampleNotes from "../notes";
+import sampleFolders from "../folders";
+import { randomFolders, randomNotes } from "../randomDataSet";
 
 const App = () => {
-  const [themeMode, setThemeMode] = useState("light");
+  const [themeMode, setThemeMode] = useState("dark");
   const [theme, setTheme] = useState(themeBase(themeMode));
+  const [randomDataToggle, setRandomDataToggle] = useState(null);
 
   useEffect(() => {
     let storedTheme = localStorage.getItem("theme");
 
     if (!storedTheme || (storedTheme !== "light" && storedTheme !== "dark")) {
-      setThemeMode("light");
-      localStorage.setItem("theme", "light");
+      setThemeMode("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       setThemeMode(storedTheme);
     }
@@ -30,6 +34,14 @@ const App = () => {
     localStorage.setItem("theme", mode);
   };
 
+  const useRandomData = () => {
+    if (randomDataToggle === null) {
+      setRandomDataToggle(true);
+    } else {
+      setRandomDataToggle((old) => !old);
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -42,8 +54,18 @@ const App = () => {
           overflow: "hidden",
         }}
       >
-        <Header theme={themeMode} changeTheme={changeTheme} />
-        <Content />
+        <Header
+          theme={themeMode}
+          changeTheme={changeTheme}
+          randomData={useRandomData}
+        />
+        <Content
+          sampleNotes={sampleNotes}
+          sampleFolders={sampleFolders}
+          randomNotes={randomNotes}
+          randomFolders={randomFolders}
+          randomDataToggle={randomDataToggle}
+        />
         <Footer />
       </Grid>
     </ThemeProvider>
