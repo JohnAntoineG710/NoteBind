@@ -18,4 +18,4 @@ Note bind is an application that helps users organize and categorize their notes
 
   Please note that the application stores its data in the browser's **localStorage**. Despite the fact that data persists across browser refreshes, NoteBind is not meant to be used in production yet.
 
-### Check out a working version of the project by visiting [react.john-antoine.codes](https://react.john-antoine.codes)
+### Check out a working version of the project by visiting [react.john-antoine.xyz](https://react.john-antoine.xyz)
