@@ -12,7 +12,7 @@ Note bind is an application that helps users organize and categorize their notes
 
 ### Technologies Used
 
-- **React:** the main Front-End Framework used in NoteBind. Find out more [HERE](https://material-ui.com/)
+- **React:** the main Front-End Framework used in NoteBind. Find out more [HERE](https://react.dev/)
 - **Material-UI:** A modern and customizeable CSS framework. Find out more [HERE](https://material-ui.com/)
 - **Nord Theme:** The main color theme used in the application. Find out more [HERE](https://www.nordtheme.com/)
 
