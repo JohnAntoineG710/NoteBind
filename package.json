@@ -1,29 +1,36 @@
 {
   "name": "NoteBind",
   "homepage": "https://react.john-antoine.codes",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "@material-ui/core": "*",
-    "@material-ui/icons": "*",
-    "@material-ui/styles": "*",
-    "@material-ui/system": "*",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-masonry-css": "*",
-    "react-scripts": "3.2.0",
-    "simplebar-react": "*"
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.8",
+    "@mui/material": "^5.14.8",
+    "@mui/styles": "^5.14.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-masonry-css": "^1.0.16",
+    "react-scripts": "^5.0.1",
+    "simplebar-react": "^3.2.4"
   },
   "devDependencies": {
-    "typescript": "3.3.3"
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": [
     ">0.2%",

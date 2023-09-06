@@ -5,12 +5,12 @@ import {
   Toolbar,
   Typography,
   IconButton,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import LightIcon from "@material-ui/icons/Brightness7";
-import DarkIcon from "@material-ui/icons/Brightness4";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import CodeRoundedIcon from "@material-ui/icons/CodeRounded";
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import LightIcon from "@mui/icons-material/Brightness7";
+import DarkIcon from "@mui/icons-material/Brightness4";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import CodeRoundedIcon from "@mui/icons-material/CodeRounded";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +34,7 @@ const Header = ({ theme, changeTheme, randomData }) => {
           <Typography variant="h6" className={classes.title}>
             NoteBind!
           </Typography>
-          <IconButton edge="end" onClick={randomData}>
+          <IconButton edge="end" onClick={randomData} size="large">
             <CodeRoundedIcon />
           </IconButton>
           {theme === "light" ? (
@@ -43,7 +43,7 @@ const Header = ({ theme, changeTheme, randomData }) => {
               onClick={() => {
                 changeTheme("dark");
               }}
-            >
+              size="large">
               <LightIcon />
             </IconButton>
           ) : (
@@ -52,11 +52,11 @@ const Header = ({ theme, changeTheme, randomData }) => {
               onClick={() => {
                 changeTheme("light");
               }}
-            >
+              size="large">
               <DarkIcon />
             </IconButton>
           )}
-          <IconButton edge="end" onClick={openGitHub}>
+          <IconButton edge="end" onClick={openGitHub} size="large">
             <GitHubIcon />
           </IconButton>
         </Toolbar>

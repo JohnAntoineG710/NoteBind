@@ -1,10 +1,10 @@
 import React from "react";
 import Folder from "./Folder";
 import CreateFolder from "./CreateFolder";
-import { Grid, List } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid, List } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import SimpleBar from "simplebar-react";
-import "simplebar/dist/simplebar.min.css";
+import "simplebar-react/dist/simplebar.min.css";
 
 const useStyles = makeStyles((theme) => ({
   list: {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 import SideBar from "./SideBar";
 import NotesContainer from "./NotesContainer";
 

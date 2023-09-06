@@ -1,4 +1,4 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme, adaptV4Theme } from "@mui/material/styles";
 
 const nordPalette = {
   nord00: "#2E3440",
@@ -47,7 +47,7 @@ const colors = {
 };
 
 const theme = (variant) =>
-  createMuiTheme({
+  createTheme(adaptV4Theme({
     palette: {
       action: {
         active: colors[variant].folderIcons, // Folder icons and buttons
@@ -70,6 +70,6 @@ const theme = (variant) =>
         secondary: colors[variant].textAccent, // Secondary Labels
       },
     },
-  });
+  }));
 
 export default theme;

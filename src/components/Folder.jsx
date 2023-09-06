@@ -5,10 +5,10 @@ import {
   ListItemSecondaryAction,
   ListItemText,
   IconButton,
-} from "@material-ui/core";
-import FolderIcon from "@material-ui/icons/Folder";
-import BorderColorRoundedIcon from "@material-ui/icons/BorderColorRounded";
-import DeleteForeverRoundedIcon from "@material-ui/icons/DeleteForeverRounded";
+} from "@mui/material";
+import FolderIcon from "@mui/icons-material/Folder";
+import BorderColorRoundedIcon from "@mui/icons-material/BorderColorRounded";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import FolderDialog from "./FolderDialog";
 
 const Folder = (props) => {
@@ -46,7 +46,7 @@ const Folder = (props) => {
               e.stopPropagation();
               setOpen(true);
             }}
-          >
+            size="large">
             <BorderColorRoundedIcon />
           </IconButton>
           <IconButton
@@ -54,7 +54,7 @@ const Folder = (props) => {
               e.stopPropagation();
               props.deleteFolder(props.id);
             }}
-          >
+            size="large">
             <DeleteForeverRoundedIcon />
           </IconButton>
         </ListItemSecondaryAction>

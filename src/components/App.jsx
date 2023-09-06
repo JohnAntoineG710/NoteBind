@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { CssBaseline, Grid } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/styles";
+import { CssBaseline, Grid } from "@mui/material";
+import { ThemeProvider } from "@mui/styles";
 import themeBase from "../theme";
 import Header from "./Header";
 import Content from "./Content";

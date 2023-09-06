@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box } from "@mui/material";
 import Masonry from "react-masonry-css";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
 import SimpleBar from "simplebar-react";
-import "simplebar/dist/simplebar.min.css";
+import "simplebar-react/dist/simplebar.min.css";
 
 const breakpoints = {
   default: 4,
