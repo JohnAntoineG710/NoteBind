@@ -1,4 +1,4 @@
-import { createTheme, adaptV4Theme } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
 const nordPalette = {
   nord00: "#2E3440",
@@ -47,11 +47,12 @@ const colors = {
 };
 
 const theme = (variant) =>
-  createTheme(adaptV4Theme({
+  createTheme({
     palette: {
+      mode: variant,
       action: {
         active: colors[variant].folderIcons, // Folder icons and buttons
-        selected: colors[variant].folderSelected, // Selected folder background
+        selectedOpacity: 0.3,
       },
       background: {
         default: colors[variant].backgroundMain, // Main background
@@ -70,6 +71,6 @@ const theme = (variant) =>
         secondary: colors[variant].textAccent, // Secondary Labels
       },
     },
-  }));
+  });
 
 export default theme;

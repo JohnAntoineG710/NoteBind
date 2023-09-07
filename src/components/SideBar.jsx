@@ -1,13 +1,24 @@
 import React from "react";
+import { styled } from '@mui/material/styles';
 import Folder from "./Folder";
 import CreateFolder from "./CreateFolder";
 import { Grid, List } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
 
-const useStyles = makeStyles((theme) => ({
-  list: {
+const PREFIX = 'SideBar';
+
+const classes = {
+  list: `${PREFIX}-list`,
+  root: `${PREFIX}-root`
+};
+
+const StyledGrid = styled(Grid)((
+  {
+    theme
+  }
+) => ({
+  [`& .${classes.list}`]: {
     width: "100%",
     maxWidth: 360,
     maxHeight: "100%",
@@ -15,18 +26,19 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     margin: 0,
   },
-  root: {
+
+  [`&.${classes.root}`]: {
     padding: "0 8px",
     maxHeight: "100%",
     backgroundColor: theme.palette.background.paper,
     overflow: "hidden",
-  },
+  }
 }));
 
 const SideBar = (props) => {
-  const classes = useStyles();
+
   return (
-    <Grid item xs={3} lg={2} className={classes.root}>
+    <StyledGrid item xs={3} lg={2} className={classes.root}>
       <CreateFolder addFolder={props.addFolder} />
       <List className={classes.list}>
         <SimpleBar style={{ maxHeight: "81vh", overflow: "auto" }}>
@@ -45,7 +57,7 @@ const SideBar = (props) => {
           ))}
         </SimpleBar>
       </List>
-    </Grid>
+    </StyledGrid>
   );
 };
 

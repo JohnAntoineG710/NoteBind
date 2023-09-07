@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
-  ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
@@ -28,8 +28,7 @@ const Folder = (props) => {
 
   return (
     <div ref={props.newFolder ? newFolder : null}>
-      <ListItem
-        button
+      <ListItemButton
         selected={props.active === props.id}
         onClick={() => {
           props.selectFolder(props.id);
@@ -58,7 +57,7 @@ const Folder = (props) => {
             <DeleteForeverRoundedIcon />
           </IconButton>
         </ListItemSecondaryAction>
-      </ListItem>
+      </ListItemButton>
       {open && (
         <FolderDialog
           folderID={props.id}

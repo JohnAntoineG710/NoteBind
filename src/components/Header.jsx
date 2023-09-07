@@ -1,4 +1,5 @@
 import React from "react";
+import { styled } from '@mui/material/styles';
 import {
   Grid,
   AppBar,
@@ -6,29 +7,41 @@ import {
   Typography,
   IconButton,
 } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
 import LightIcon from "@mui/icons-material/Brightness7";
 import DarkIcon from "@mui/icons-material/Brightness4";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import CodeRoundedIcon from "@mui/icons-material/CodeRounded";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
+const PREFIX = 'Header';
+
+const classes = {
+  root: `${PREFIX}-root`,
+  title: `${PREFIX}-title`
+};
+
+const StyledGrid = styled(Grid)((
+  {
+    theme
+  }
+) => ({
+  [`& .${classes.root}`]: {
     flexGrow: 1,
+    backgroundColor: theme.palette.primary.main,
   },
-  title: {
+
+  [`& .${classes.title}`]: {
     flexGrow: 1,
-  },
+  }
 }));
 
 const openGitHub = () =>
   window.open("https://github.com/JohnAntoineG710/NoteBind", "_blank");
 
 const Header = ({ theme, changeTheme, randomData }) => {
-  const classes = useStyles();
+
 
   return (
-    <Grid item>
+    <StyledGrid item>
       <AppBar position="static" className={classes.root}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
@@ -61,7 +74,7 @@ const Header = ({ theme, changeTheme, randomData }) => {
           </IconButton>
         </Toolbar>
       </AppBar>
-    </Grid>
+    </StyledGrid>
   );
 };
 

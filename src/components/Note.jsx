@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { styled } from '@mui/material/styles';
 import NoteDialog from "./NoteDialog";
 import {
   Card,
@@ -7,16 +8,22 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+const PREFIX = 'Note';
 
-const useStyles = makeStyles({
-  root: {
+const classes = {
+  root: `${PREFIX}-root`,
+  title: `${PREFIX}-title`,
+  pos: `${PREFIX}-pos`
+};
+
+const Root = styled('div')({
+  [`& .${classes.root}`]: {
     padding: 0,
   },
-  title: {
+  [`& .${classes.title}`]: {
     fontSize: 14,
   },
-  pos: {
+  [`& .${classes.pos}`]: {
     marginBottom: 12,
   },
 });
@@ -36,10 +43,10 @@ const Note = (props) => {
     setOpen(false);
   };
 
-  const classes = useStyles();
+
 
   return (
-    <div ref={props.newNote ? newNote : null}>
+    <Root ref={props.newNote ? newNote : null}>
       <Card className={classes.root}>
         <CardContent>
           <Typography
@@ -86,7 +93,7 @@ const Note = (props) => {
           actionLabel="Edit Note"
         />
       )}
-    </div>
+    </Root>
   );
 };
 
