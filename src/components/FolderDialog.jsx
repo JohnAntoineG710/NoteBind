@@ -13,7 +13,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const FolderDialog = (props) => {
   const [folder, setFolder] = useState({ name: "" });
   const [nameError, setNameError] = useState(false);
-  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     if (props.folderID) {
@@ -24,12 +23,6 @@ const FolderDialog = (props) => {
     }
   }, [props]);
 
-  useEffect(() => {
-    return () => {
-      props.onReset();
-    };
-  }, [open, props]);
-
   const handleChange = (e) => {
     const text = e.target.value;
     setFolder((old) => ({ ...old, name: text }));
@@ -37,7 +30,7 @@ const FolderDialog = (props) => {
 
   const handleClose = () => {
     setFolder({ name: "" });
-    setOpen(false);
+    props.onReset();
   };
 
   const handleAction = () => {
@@ -60,7 +53,7 @@ const FolderDialog = (props) => {
 
   return (
     <Dialog
-      open={open}
+      open={props.open}
       TransitionComponent={Transition}
       keepMounted
       onClose={handleClose}

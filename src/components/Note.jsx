@@ -84,6 +84,7 @@ const Note = (props) => {
       </Card>
       {open && (
         <NoteDialog
+          open={open}
           noteID={props.noteID}
           title={props.title}
           content={props.content}

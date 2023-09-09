@@ -17,7 +17,6 @@ const NoteDialog = (props) => {
   });
   const [noteError, setNoteError] = useState(false);
   const [titleError, setTitleError] = useState(false);
-  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     if (props.noteID) {
@@ -29,12 +28,6 @@ const NoteDialog = (props) => {
     }
   }, [props]);
 
-  useEffect(() => {
-    return () => {
-      props.onReset();
-    };
-  }, [open, props]);
-
   const changeNote = (e) => {
     const { name, value } = e.target;
     setNote({ ...note, [name]: value });
@@ -45,7 +38,7 @@ const NoteDialog = (props) => {
       title: "",
       content: "",
     });
-    setOpen(false);
+    props.onReset();
   };
 
   const handleAction = () => {
@@ -73,7 +66,7 @@ const NoteDialog = (props) => {
 
   return (
     <Dialog
-      open={open}
+      open={props.open}
       TransitionComponent={Transition}
       keepMounted
       onClose={handleClose}

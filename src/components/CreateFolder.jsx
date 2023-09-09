@@ -13,9 +13,7 @@ const CreateFolder = (props) => {
   return (
     <div className="create-folder">
       <Button
-        onClick={() => {
-          setOpen(true);
-        }}
+        onClick={() => setOpen(true)}
         startIcon={<AddIcon color="primary" />}
         variant="contained"
         color="secondary"
@@ -26,6 +24,7 @@ const CreateFolder = (props) => {
       </Button>
       {open && (
         <FolderDialog
+          open={open}
           onReset={resetState}
           onAction={props.addFolder}
           label="Add Folder"

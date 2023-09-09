@@ -46,6 +46,7 @@ const CreateArea = (props) => {
     )}
     {open && (
       <NoteDialog
+        open={open}
         activeFolder={props.activeFolder}
         onAction={props.onAdd}
         onReset={resetState}
