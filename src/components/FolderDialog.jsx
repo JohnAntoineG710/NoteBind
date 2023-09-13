@@ -5,6 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
+import { useTranslation } from "react-i18next";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -13,6 +14,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const FolderDialog = (props) => {
   const [folder, setFolder] = useState({ name: "" });
   const [nameError, setNameError] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (props.folderID) {
@@ -60,11 +62,16 @@ const FolderDialog = (props) => {
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"
     >
-      <DialogTitle>{props.folderID ? "Edit Folder" : "New Folder"}</DialogTitle>
+      <DialogTitle>
+        {props.folderID ?
+          t('content.sideBar.folderDialog.title.edit') : 
+          t('content.sideBar.folderDialog.title.new')
+        }
+      </DialogTitle>
       <DialogContent>
         <TextField
           InputProps={inputProps}
-          label="Folder Name"
+          label={t('content.sideBar.folderDialog.inputLabel')}
           color="primary"
           error={nameError}
           helperText={nameError && "Please provide folder name"}

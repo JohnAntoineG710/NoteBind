@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import FolderDialog from "./FolderDialog";
+import { useTranslation } from "react-i18next";
 
 const CreateFolder = (props) => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   const resetState = () => {
     setOpen(false);
@@ -20,14 +22,14 @@ const CreateFolder = (props) => {
         fullWidth
         style={{ margin: "8px 0" }}
       >
-        Add Folder
+        {t('content.sideBar.addFolderButton')}
       </Button>
       {open && (
         <FolderDialog
           open={open}
           onReset={resetState}
           onAction={props.addFolder}
-          label="Add Folder"
+          label={t('content.sideBar.folderDialog.action.new')}
         />
       )}
     </div>

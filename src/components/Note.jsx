@@ -8,6 +8,7 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 const PREFIX = 'Note';
 
 const classes = {
@@ -31,6 +32,7 @@ const Root = styled('div')({
 const Note = (props) => {
   const [open, setOpen] = useState(false);
   const newNote = useRef();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (newNote.current) {
@@ -54,7 +56,7 @@ const Note = (props) => {
             color="textSecondary"
             gutterBottom
           >
-            Note
+            {t('content.note.headerTag')}
           </Typography>
           <Typography className={classes.pos} variant="h5" component="h2">
             {props.title}
@@ -70,7 +72,7 @@ const Note = (props) => {
               setOpen(true);
             }}
           >
-            EDIT
+            {t('content.note.button.edit')}
           </Button>
           <Button
             size="small"
@@ -78,7 +80,7 @@ const Note = (props) => {
               props.onDelete(props.noteID);
             }}
           >
-            DELETE
+            {t('content.note.button.delete')}
           </Button>
         </CardActions>
       </Card>
@@ -91,7 +93,7 @@ const Note = (props) => {
           activeFolder={props.noteFolder}
           onAction={props.onEdit}
           onReset={resetState}
-          actionLabel="Edit Note"
+          action="edit"
         />
       )}
     </Root>

@@ -20,7 +20,7 @@
   display: none;
 }
 
-li:hover .folder-item-action {
+.folder-item:hover .folder-item-action {
   display: block;
 }
 

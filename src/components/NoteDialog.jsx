@@ -5,6 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
+import { useTranslation } from "react-i18next";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -17,6 +18,7 @@ const NoteDialog = (props) => {
   });
   const [noteError, setNoteError] = useState(false);
   const [titleError, setTitleError] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (props.noteID) {
@@ -73,11 +75,17 @@ const NoteDialog = (props) => {
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"
     >
-      <DialogTitle>{props.actionLabel}</DialogTitle>
+      <DialogTitle>
+        {
+          props.action === "add" ?
+          t('content.note.dialog.label.add') :
+          t('content.note.dialog.label.edit')
+        }
+      </DialogTitle>
       <DialogContent>
         <TextField
           InputProps={{ ...inputProps, name: "title", value: note.title }}
-          label="Title"
+          label={t('content.note.dialog.input.title')}
           fullWidth
           style={{ marginBottom: "24px" }}
           color="primary"
@@ -91,7 +99,7 @@ const NoteDialog = (props) => {
             value: note.content,
             rows: 3,
           }}
-          label="Content"
+          label={t('content.note.dialog.input.contentLabel')}
           multiline
           fullWidth
           color="primary"
@@ -101,10 +109,14 @@ const NoteDialog = (props) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleAction} color="primary">
-          {props.actionLabel}
+          {
+            props.action === "add" ?
+              t('content.note.dialog.action.add') :
+              t('content.note.dialog.action.edit')
+          }
         </Button>
         <Button onClick={handleClose} color="primary">
-          Cancel
+          {t('content.note.dialog.button.cancel')}
         </Button>
       </DialogActions>
     </Dialog>

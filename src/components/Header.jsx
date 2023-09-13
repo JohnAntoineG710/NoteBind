@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { styled } from '@mui/material/styles';
 import {
   Grid,
@@ -10,7 +10,9 @@ import {
 import LightIcon from "@mui/icons-material/Brightness7";
 import DarkIcon from "@mui/icons-material/Brightness4";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import LanguageIcon from "@mui/icons-material/Language";
 import CodeRoundedIcon from "@mui/icons-material/CodeRounded";
+import {useTranslation} from "react-i18next";
 
 const PREFIX = 'Header';
 
@@ -37,16 +39,38 @@ const StyledGrid = styled(Grid)((
 const openGitHub = () =>
   window.open("https://github.com/JohnAntoineG710/NoteBind", "_blank");
 
+
 const Header = ({ theme, changeTheme, randomData }) => {
 
+  const { t, i18n } = useTranslation();
+
+  const [ lang, setLang ] = useState('en');
+
+  const langs = {
+    en: { nativeName: 'English' },
+    ar: { nativeName: 'العربية' }
+  };
+
+  const changeLanguage = () => {
+    if (lang === 'en') {
+      i18n.changeLanguage('ar');
+      setLang('ar');
+    } else {
+      i18n.changeLanguage('en');
+      setLang('en');
+    }
+  }
 
   return (
     <StyledGrid item>
       <AppBar position="static" className={classes.root}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            NoteBind!
+            {t('header.title')}
           </Typography>
+          <IconButton edge="end" onClick={changeLanguage} size="large">
+            <LanguageIcon />
+          </IconButton>
           <IconButton edge="end" onClick={randomData} size="large">
             <CodeRoundedIcon />
           </IconButton>

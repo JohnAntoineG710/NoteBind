@@ -10,10 +10,12 @@ import FolderIcon from "@mui/icons-material/Folder";
 import BorderColorRoundedIcon from "@mui/icons-material/BorderColorRounded";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import FolderDialog from "./FolderDialog";
+import { useTranslation } from "react-i18next";
 
 const Folder = (props) => {
   const [open, setOpen] = useState(false);
   const newFolder = useRef();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (newFolder.current) {
@@ -33,6 +35,7 @@ const Folder = (props) => {
         onClick={() => {
           props.selectFolder(props.id);
         }}
+        className="folder-item"
         divider
       >
         <ListItemIcon>
@@ -60,11 +63,12 @@ const Folder = (props) => {
       </ListItemButton>
       {open && (
         <FolderDialog
+          open={open}
           folderID={props.id}
           folderName={props.name}
           onReset={resetState}
           onAction={props.editFolder}
-          label="Edit Folder"
+          label={t('content.sideBar.folderDialog.action.edit')}
         />
       )}
     </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CssBaseline, Grid, Box } from "@mui/material";
+import { CssBaseline, Grid } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import themeBase from "../theme";
 import Header from "./Header";
@@ -8,11 +8,13 @@ import Footer from "./Footer";
 import sampleNotes from "../notes";
 import sampleFolders from "../folders";
 import { randomFolders, randomNotes } from "../randomDataSet";
+import { useTranslation } from "react-i18next";
 
 const App = () => {
   const [themeMode, setThemeMode] = useState("dark");
   const [theme, setTheme] = useState(themeBase(themeMode));
   const [randomDataToggle, setRandomDataToggle] = useState(null);
+  const tt = useTranslation();
 
   useEffect(() => {
     let storedTheme = localStorage.getItem("theme");

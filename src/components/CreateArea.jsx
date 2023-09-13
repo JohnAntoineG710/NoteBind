@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Button, IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/AddCircleTwoTone";
 import NoteDialog from "./NoteDialog";
+import { useTranslation } from "react-i18next";
 
 const CreateArea = (props) => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   const resetState = () => {
     setOpen(false);
@@ -50,7 +52,7 @@ const CreateArea = (props) => {
         activeFolder={props.activeFolder}
         onAction={props.onAdd}
         onReset={resetState}
-        actionLabel="Add Note"
+        action="add"
       />
     )}
   </>;
