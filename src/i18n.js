@@ -72,44 +72,44 @@ i18n
           },
           content: {
             sideBar: {
-              addFolderButton: 'اضافه مستند Folder',
+              addFolderButton: 'اضافه مجلد',
               folderDialog: {
                 title: {
-                  new: 'New Folder',
-                  edit: 'Edit Folder'
+                  new: 'مجلد جديد',
+                  edit: 'تعديل مجلد'
                 },
                 action: {
-                  new: 'Add Folder',
-                  edit: 'Edit'
+                  new: 'اضافه',
+                  edit: 'تعديل'
                 },
-                inputLabel: 'Folder Name'
+                inputLabel: 'اسم المجلد'
               }
             },
             note: {
-              headerTag: 'Note',
+              headerTag: 'ملاحظه',
               button: {
-                edit: 'edit',
-                delete: 'delete'
+                edit: 'تعديل',
+                delete: 'حذف'
               },
               dialog: {
                 label: {
-                  add: 'New Note',
-                  edit: 'Edit Note'
+                  add: 'ملاحظه جديده',
+                  edit: 'تعديل ملاحظه'
                 },
                 action : {
-                  add: 'add',
-                  edit: 'edit'
+                  add: 'اضافه',
+                  edit: 'تعديل'
                 },
                 input: {
-                  title: 'Title',
-                  contentLabel: 'Content'
+                  title: 'عنوان',
+                  contentLabel: 'محتوى'
                 },
-                button: {cancel: 'cancel'}
+                button: {cancel: 'الغاء'}
               }
             }
           },
           footer: {
-            copyright: 'Copyright'
+            copyright: 'جميع الحقوق محفوظه'
           }
         }
       }

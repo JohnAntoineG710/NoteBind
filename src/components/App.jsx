@@ -14,7 +14,10 @@ const App = () => {
   const [themeMode, setThemeMode] = useState("dark");
   const [theme, setTheme] = useState(themeBase(themeMode));
   const [randomDataToggle, setRandomDataToggle] = useState(null);
-  const tt = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  // Manage RTL
+  document.body.dir = i18n.dir();
 
   useEffect(() => {
     let storedTheme = localStorage.getItem("theme");
